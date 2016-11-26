@@ -10,11 +10,12 @@ Stuff that doesn't fit anywhere else
     * this could be slack, gitter, twitter, or etherpad.
     * This could also simply be a whiteboard or flipchart
   * At some point, the users "get" it, and they start looking at the big picture. We need some kind of growth path that suggests how the applications can move to production.
+  * Macbook keyboards show the `"` as a wierd character which maks the curl warmups fail.
 
 
 ## Network problems
 
-  * ensure that the firewall can allow several connections
+  * ensure that the firewall on the services provided (FG, Jenkins, etc) can allow several connections on ssh - no throttling
 
 ## Git problems
 
