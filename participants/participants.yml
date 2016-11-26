@@ -192,12 +192,12 @@ participants:
     homepage:
     email: collins.udanor@unn.edu.ng
 
-  - name: Toyin Enijuomelin
-    institute:
+  - name: Toyin Enikuomehin
+    institute: LASU
     orcid:
     github:
       username: princetee
-      confirmed: no
+      confirmed: yes
     twitter:
     homepage:
     email: toyinenikuomehin@gmail.com

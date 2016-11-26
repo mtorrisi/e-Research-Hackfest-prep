@@ -49,6 +49,12 @@ projects:
     repo:
     stack:
     members:
+      - princtee
+    components:
+      - FG
+      - gLibrary
+    applications:
+      - fuzzylite
 
   - name: CADD
     repo: UNIZIK-Drug-Design-and-Informatics
