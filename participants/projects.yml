@@ -66,6 +66,7 @@ projects:
       - gLibrary
       - OAR
     applications:
+      - AutoDock
       - GROMACS
       - VINA
 
