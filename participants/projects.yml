@@ -129,29 +129,29 @@ projects:
     applications:
       - Python
 
-    - name: UI-NADA
-      repo:
-      stack:
-      members:
-        - waleolayide
-      components:
-        - oar
-        - ophidia
-      applications:
-        - Python
+  - name: UI-NADA
+    repo:
+    stack:
+    members:
+      - waleolayide
+    components:
+      - oar
+      - ophidia
+    applications:
+      - Python
 
-    - name: HPC416S
-      repo:
-      stack:
-      members:
-        - trustodia
-      components:
-        - Futuregateway
-      applications:
-        - Qiime
-        - usearch-64-bit
-        - Python
-        - Perl
-        - blast
-        - FastQC
-        - Prodigal
+  - name: HPC416S
+    repo:
+    stack:
+    members:
+      - trustodia
+    components:
+      - Futuregateway
+    applications:
+      - Qiime
+      - usearch-64-bit
+      - Python
+      - Perl
+      - blast
+      - FastQC
+      - Prodigal

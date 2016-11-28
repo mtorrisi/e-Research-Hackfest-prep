@@ -1,0 +1,89 @@
+---
+- hosts: dev
+  name: gLibrary play
+  tasks:
+    - name: Pull vars
+      include_vars:
+        file: "{{ item }}"
+      with_items:
+        - "../../participants/participants.yml"
+        - "../../participants/projects.yml"
+        - "group_vars/passwords-{{ site_name }}.yml"
+
+    - name: Debug the participants
+      debug:
+        var: participants
+
+    - name: Announce the gLibrary play
+      slack:
+        domain: scigaia
+        token: "{{ slack_token }}"
+        msg: "{{ inventory_hostname }} at {{ site_name }} Logging in to gLibrary"
+        channel: "#lagos-hackfest"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack
+
+    - name: Get token from gLibrary
+      uri:
+        HEADERS_: "Content-Type:application/json"
+        #headers: "Content-Type:application/json"
+        #body: "{{ lookup('file','files/glibrary_login.json') }}"
+        body:
+          username: "{{ glibrary['admin_user'] }}"
+          password: "{{ glibrary_admin_password }}"
+        body_format: json
+        method: POST
+        url: "{{ glibrary.url }}/v2/users/login"
+        validate_certs: false
+        return_content: yes
+        status_code: 200
+      register: glibrary_token
+      failed_when: false
+
+    - name: Create user on glibrary
+      uri:
+        HEADERS_: "Content-Type:application/json"
+        #headers: "Content-Type:application/json"
+        headers:
+          Authorization: "{{ glibrary_token.json.id}}"
+        #body: "{{ lookup('file','files/glibrary_login.json') }}"
+        body:
+          username: "{{ item.github.username }}"
+          password: "hackfest"
+          email: "{{ item.email }}"
+        body_format: json
+        method: POST
+        url: "{{ glibrary.url }}/v2/users"
+        validate_certs: false
+        return_content: yes
+        status_code: 200
+      with_items: "{{ participants }}"
+
+    - name: Create project repos on glibrary
+      uri:
+        headers:
+          - Authorization: "{{ glibrary_token.json.id}}"
+        body:
+          name: "{{ project.name }}"
+        body_format: json
+        method: POST
+        url: "{{ glibrary.url }}/v2/repos"
+        validate_certs: false
+        return_content: yes
+        status_code: 200
+      with_items: "{{ participants }}"
+
+    - name: Announce the Config play outcome
+      slack:
+        domain: scigaia
+        token: "{{ slack_token }}"
+        msg: "Created users and repos on gLibrary"
+        channel: "#lagos-hackfest"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack
