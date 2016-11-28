@@ -10,10 +10,6 @@
         - "../../participants/projects.yml"
         - "group_vars/passwords-{{ site_name }}.yml"
 
-    - name: Debug the participants
-      debug:
-        var: participants
-
     - name: Announce the gLibrary play
       slack:
         domain: scigaia
@@ -43,6 +39,21 @@
       register: glibrary_token
       failed_when: false
 
+    - name: Get the list of users
+      uri:
+        HEADERS_: "Content-Type:application/json"
+        body:
+          username: "{{ glibrary['admin_user'] }}"
+          password: "{{ glibrary_admin_password }}"
+        body_format: json
+        method: POST
+        url: "{{ glibrary.url }}/v2/users/"
+        validate_certs: false
+        return_content: yes
+        status_code: 200
+      register: glibrary_token
+      failed_when: false
+
     - name: Create user on glibrary
       uri:
         HEADERS_: "Content-Type:application/json"
@@ -61,6 +72,7 @@
         return_content: yes
         status_code: 200
       with_items: "{{ participants }}"
+      failed_when: false
 
     - name: Create project repos on glibrary
       uri:
@@ -75,6 +87,7 @@
         return_content: yes
         status_code: 200
       with_items: "{{ participants }}"
+      failed_when: false
 
     - name: Announce the Config play outcome
       slack:
