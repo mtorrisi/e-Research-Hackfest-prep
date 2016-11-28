@@ -35,24 +35,8 @@
         url: "{{ glibrary.url }}/v2/users/login"
         validate_certs: false
         return_content: yes
-        status_code: 200
+        status_code: 200,422
       register: glibrary_token
-      failed_when: false
-
-    - name: Get the list of users
-      uri:
-        HEADERS_: "Content-Type:application/json"
-        body:
-          username: "{{ glibrary['admin_user'] }}"
-          password: "{{ glibrary_admin_password }}"
-        body_format: json
-        method: POST
-        url: "{{ glibrary.url }}/v2/users/"
-        validate_certs: false
-        return_content: yes
-        status_code: 200
-      register: glibrary_token
-      failed_when: false
 
     - name: Create user on glibrary
       uri:
@@ -77,16 +61,16 @@
     - name: Create project repos on glibrary
       uri:
         headers:
-          - Authorization: "{{ glibrary_token.json.id}}"
+          Authorization: "{{ glibrary_token.json.id}}"
         body:
-          name: "{{ project.name }}"
+          name: "{{ item.name }}"
         body_format: json
         method: POST
         url: "{{ glibrary.url }}/v2/repos"
         validate_certs: false
         return_content: yes
         status_code: 200
-      with_items: "{{ participants }}"
+      with_items: "{{ projects }}"
       failed_when: false
 
     - name: Announce the Config play outcome
