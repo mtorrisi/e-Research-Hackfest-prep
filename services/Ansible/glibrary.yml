@@ -9,6 +9,8 @@
         - "../../participants/participants.yml"
         - "../../participants/projects.yml"
         - "group_vars/passwords-{{ site_name }}.yml"
+      tags:
+        - variables
 
     - name: Announce the gLibrary play
       slack:
@@ -37,10 +39,12 @@
         return_content: yes
         status_code: 200,422
       register: glibrary_token
+      tags:
+        - login
 
     - name: Create user on glibrary
       uri:
-        HEADERS_: "Content-Type:application/json"
+        HEADER_Content-Type: "application/json"
         #headers: "Content-Type:application/json"
         headers:
           Authorization: "{{ glibrary_token.json.id}}"
@@ -54,24 +58,26 @@
         url: "{{ glibrary.url }}/v2/users"
         validate_certs: false
         return_content: yes
-        status_code: 200
+        status_code: 200,422
       with_items: "{{ participants }}"
-      failed_when: false
+      tags:
+        - users
 
     - name: Create project repos
       uri:
-        headers:
-          Authorization: "{{ glibrary_token.json.id}}"
+        HEADER_Content-Type: "application/json"
+        HEADER_Authorization: "{{ glibrary_token.json.id}}"
         body:
-          name: "{{ item.name }}"
+          name: "{{ item.name | lower | replace ('-','_')}}"
         body_format: json
         method: POST
         url: "{{ glibrary.url }}/v2/repos"
         validate_certs: false
         return_content: yes
-        status_code: 200
+        status_code: 200,409
       with_items: "{{ projects }}"
-      failed_when: false
+      tags:
+        - repos
 
     - name: Set ACLs
       uri:
@@ -85,9 +91,13 @@
         url: "{{ glibrary.url }}/v2/repos/{{ item.name }}/_acls/"
         validate_certs: false
         return_content: yes
-        status_code: 200
+        status_code: 200,400
+      when: "{{ item.members }}"
       with_items: "{{ projects }}"
-
+      failed_when: false
+      tags:
+        - repos
+        - acls
 
     - name: Announce the Config play outcome
       slack:
