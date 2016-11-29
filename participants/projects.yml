@@ -97,10 +97,11 @@ projects:
       - R
 
   - name: ibis
-    repo:
+    repo: https://github.com/sprintell/ibis
     stack:
     members:
-      -
+      - temitope
+      - sprintell
     components:
       - Futuregateway
     applications:
