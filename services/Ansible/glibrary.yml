@@ -81,20 +81,19 @@
 
     - name: Set ACLs
       uri:
-        headers:
-          Authorization: "{{ glibrary_token.json.id}}"
+        HEADER_Content-Type: "application/json"
+        HEADER_Authorization: "{{ glibrary_token.json.id}}"
         body:
           username: "{{ item.members[0]}}"
-          permissions: RW
+          permissions: "RW"
         body_format: json
         method: POST
-        url: "{{ glibrary.url }}/v2/repos/{{ item.name }}/_acls/"
+        url: "{{ glibrary.url }}/v2/repos/{{ item.name | lower | replace ('-','_')}}/_acls/"
         validate_certs: false
         return_content: yes
-        status_code: 200,400
+        status_code: 200,409
       when: "{{ item.members }}"
       with_items: "{{ projects }}"
-      failed_when: false
       tags:
         - repos
         - acls
