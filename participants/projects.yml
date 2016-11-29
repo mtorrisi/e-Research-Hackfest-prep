@@ -142,8 +142,8 @@ projects:
       - Python
 
   - name: HPC416S
-    repo:
-    stack:
+    repo: https://github.com/trustodia/HackFest
+    stack: https://stackshare.io/trustodia/trustodia
     members:
       - trustodia
     components:
