@@ -44,7 +44,6 @@ Services necessary for the hackfest are :
        * [ ] Run the deloyment-setup playbook.
      * Commercial provider : Request _large_ VM from your provider which will be used by all participants _or_ request a _small_ VM from your provider _per participant_
   1. [ ] Ensure that the organisers ssh keys are assigned to a deployment user (_e.g._ `ansible`)
-  1. [ ]
 
 
 ### Development Environment - manual

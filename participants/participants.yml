@@ -192,12 +192,12 @@ participants:
     homepage:
     email: collins.udanor@unn.edu.ng
 
-  - name: Toyin Enijuomelin
-    institute:
+  - name: Toyin Enikuomehin
+    institute: LASU
     orcid:
     github:
       username: princetee
-      confirmed: no
+      confirmed: yes
     twitter:
     homepage:
     email: toyinenikuomehin@gmail.com
@@ -243,8 +243,8 @@ participants:
     email:
 
   - name: "Benjamin Aribisala"
-    institute:
-    orcid:
+    institute: Lagos State University
+    orcid: 0000-0002-6290-1707
     github:
       username: bsegun
       confirmed: yes
