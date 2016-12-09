@@ -2,7 +2,7 @@
 projects:
   - name: Plantisc2
     repo:  https://github.com/cudanor/Plantisc
-    stack:
+    stack: https://stackshare.io/cudanor/plantisc2/details
     members:
       - cudanor
     components:
@@ -49,12 +49,26 @@ projects:
     repo:
     stack:
     members:
+      - princtee
+    components:
+      - FG
+      - gLibrary
+    applications:
+      - fuzzylite
 
-  - name: CADD
+  - name: D4PR
     repo: UNIZIK-Drug-Design-and-Informatics
     stack: https://stackshare.io/nnamdi-azikiwe-university-awka/d4pr
     members:
       - icuzochukwu
+    components:
+      - FG
+      - gLibrary
+      - OAR
+    applications:
+      - AutoDock
+      - GROMACS
+      - VINA
 
   - name: ethernet
     repo:
@@ -83,10 +97,11 @@ projects:
       - R
 
   - name: ibis
-    repo:
+    repo: https://github.com/sprintell/ibis
     stack:
     members:
-      -
+      - temitope
+      - sprintell
     components:
       - Futuregateway
     applications:
@@ -105,8 +120,9 @@ projects:
 
   - name: OAU-MAT
     repo: https://github.com/trinitysege/OAU-MAT
-    stack:
+    stack: https://stackshare.io/obafemi-awolowo-university-ife/obafemi-awolowo-university-ife/
     members:
+      - trinitysege
     components:
       - oar
       - Futuregateway
@@ -114,28 +130,29 @@ projects:
     applications:
       - Python
 
-    - name: UI-NADA
-      repo:
-      stack:
-      members:
-      components:
-        - oar
-        - ophidia
-      applications:
-        - Python
+  - name: UI-NADA
+    repo:
+    stack:
+    members:
+      - waleolayide
+    components:
+      - oar
+      - ophidia
+    applications:
+      - Python
 
-    - name: HPC416S
-      repo:
-      stack:
-      members:
-        - trustodia
-      components:
-        - Futuregateway
-      applications:
-        - Qiime
-        - usearch-64-bit
-        - Python
-        - Perl
-        - blast
-        - FastQC
-        - Prodigal
+  - name: HPC416S
+    repo: https://github.com/trustodia/HackFest
+    stack: https://stackshare.io/trustodia/trustodia
+    members:
+      - trustodia
+    components:
+      - Futuregateway
+    applications:
+      - Qiime
+      - usearch-64-bit
+      - Python
+      - Perl
+      - blast
+      - FastQC
+      - Prodigal

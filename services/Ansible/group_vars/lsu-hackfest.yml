@@ -40,6 +40,6 @@ prerequisites:
     - php5-cli
     - jq
 glibrary:
-  admin_user: hackfest
+  admin_user: admin
   admin_email: hackfest@ct.infn.it
   url: https://glibrary.ct.infn.it:3500
