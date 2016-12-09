@@ -50,14 +50,15 @@ projects:
     stack:
     members:
 
-  - name: CADD
+  - name: D4PR
     repo: UNIZIK-Drug-Design-and-Informatics
     stack: https://stackshare.io/nnamdi-azikiwe-university-awka/d4pr
     members:
       - icuzochukwu
-
+      - ezeasorekene
+      
   - name: ethernet
-    repo:
+    repo: https://github.com/unizik/D4PR
     stack:
     members:
       - behailukorma
