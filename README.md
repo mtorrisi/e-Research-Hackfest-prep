@@ -30,7 +30,10 @@ A hackfest is a coming together of various players, in order to achieve somethin
 
 # How to use this repo
 
-If you would like to run a hackfest at your site, this repo will get you started. It consists of the tools and checklists necessary to prepare for and execute a successful hackfest. There are checklists for each of the actors in the
+If you would like to run a hackfest at your site, this repo will get you started. It consists of the tools and checklists necessary to prepare for and execute a successful hackfest. There are checklists for each of the actors in the relevant subdirectory.
+
+There is also a [main checklist](master-checklist.md) which will guide you in preparing the event.
+
 
 # Contributors
 
