@@ -27,7 +27,11 @@ github_repo = "/e-Research-Hackfest-Prep"
 # Use the Github API naming schema for the variables
 milestone_title = "Aspring to Addis"
 project_name = "Hackfest Drills"
-
+issue_labels = ["todo", "checking", "missing", "done"]
+puts "issues are : "
+issue_labels.each do |issue|
+  puts issue.to_str
+end
 
 base_uri = api_url + "/repos" + github_org + github_repo
 milestones = HTTParty.get(base_uri + "/milestones", :format => :json)
@@ -67,3 +71,17 @@ ap project
 puts "getting issues"
 issues = HTTParty.get(base_uri + "/issues?milestone='#{milestone_title}'", :headers => {"User-Agent" => "drillbot"})
 ap issues
+
+puts "getting labels"
+labels = HTTParty.get(base_uri + "/labels", :headers => {"User-Agent" => "drillbot"})
+parsed_labels = JSON.parse(labels.body)
+
+# check if the labels are there
+
+labels.each do |label|
+  if JSON.parse(labels.body).any? { |l| l["name"] == label }
+    puts "label #{l["name"]} already present"
+  else
+    puts "label "+ l['name'].to_str + "needs to be created"
+  end
+end
