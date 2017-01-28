@@ -5,7 +5,10 @@ require "json"
 # Use octokit for interacting with GitHub
 require "octokit"
 
-client = Octokit::Client.new(:login => 'brucellino', :access_token => ENV['github_token'])
+# Use HTTParty to interact with other REST APIs
+require "httparty"
+
+octobot = Octokit::Client.new(:login => 'brucellino', :access_token => ENV['github_token'])
 
 github_org = "AAROC"
 github_repo = "e-Research-Hackfest-Prep"
@@ -17,7 +20,7 @@ issue_labels = ["todo", "checking", "missing", "done"]
 
 
 ############# milestones ###############################
-milestones = client.list_milestones("#{github_org}/#{github_repo}")
+milestones = octobot.list_milestones("#{github_org}/#{github_repo}")
 puts "There are #{milestones.count} milestones"
 
 # print the milestone titles
@@ -43,3 +46,7 @@ milestone = milestones.select {|m| m["title"] == "Aspiring to Addis" } # somethi
 
 
 ## Create the issues.
+file = File.read('drill_issues.json')
+issue_list = JSON.parse(file)
+ap issue_list
+puts "We have to create #{issue_list["issues"].count} issues to create"
