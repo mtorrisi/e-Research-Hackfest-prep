@@ -1,0 +1,4 @@
+{
+  "title": "Hackfest Readiness",
+  "raw": "<h1>Hackfest Drills</h1> This post is created by drillbot to check the your readiness for the event <br> I want to check wheter the API raw upload respects html and markdown, as well as the discourse poll tags. <br> Here goes : <br> # Is this showing up as an H1 ? \n [poll] \n * yes \n * no \n [/poll]"
+}
