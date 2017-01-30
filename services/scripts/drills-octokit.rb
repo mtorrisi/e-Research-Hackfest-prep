@@ -28,17 +28,17 @@ if topics["topic_list"]["topics"].any? { |t| t["title"] == "drills" }
 end
 
 
-  ap post
-  # Update post title for
+ap post
+# Update post title
 
-  discourse_post_uri = discourse_api_url + "/posts"
-  options = { :api_key => discourse_api_key, :api_username => 'system', :category => "sandbox"}
-  #response = HTTParty.post(discourse_post_uri, body: post, query: options)
+discourse_post_uri = discourse_api_url + "/posts"
+options = { :api_key => discourse_api_key, :api_username => 'system', :category => "sandbox"}
+#response = HTTParty.post(discourse_post_uri, body: post, query: options)
 
-  # check if the title has already been created - if so, update the topic with a new post
-  # if response["errors"].to_s.match('Title has already been used')
-  #   puts "the title has already been taken, finding that one"
-  # end
+# check if the title has already been created - if so, update the topic with a new post
+# if response["errors"].to_s.match('Title has already been used')
+#   puts "the title has already been taken, finding that one"
+# end
 
 
 
@@ -65,10 +65,12 @@ end
 # find the milestone with the right title
 
 milestone = milestones.select {|m| m["title"] == "Aspiring to Addis" } # something wierd about how we match the titles here
-
-
+ap milestone
+milestone_number = milestone[0]['number']
+puts milestone_number
 ## /milestones #########################################
 
+#### projects #########################################
 # Create the project.
 # projects haven't been implemented in octokit yet, so we have to HTTParty
 
@@ -84,7 +86,7 @@ if projects_list.any? { |project|  project["name"] == project_name}
     project = HTTParty.post("https://api.github.com/repos/#{github_org}/#{github_repo}/projects", :body => {"name": project_name, "body": "First drill of the hackfest"}.to_json, :headers => {"Authorization": "token #{ENV["github_token"]}", "User-Agent": "drillbot", "Accept": "application/vnd.github.inertia-preview+json"} )
 end
 ap project
-
+## /projects ###########################################
 
 ## /issues ###########################################
 ############## labels ################################
@@ -105,8 +107,8 @@ issue_list["issues"].each do |issue|
   puts issue["name"]
   issue_content = JSON.parse(File.read("../static-files/issue_templates/#{issue["template_file"]}"))
   ap issue_content
-  #issue_body = octobot.markdown('#{issue_content}')
-  #octobot.create_issue("#{github_org}/#{github_repo}",issue_content["title"],issue_content["body"])
+  issue_body = octobot.markdown('#{issue_content}')
+  octobot.create_issue("#{github_org}/#{github_repo}",issue_content["title"],issue_content["body"],:milestone => milestone_number)
 end
 
 puts "creating the topic"

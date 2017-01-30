@@ -1,0 +1,4 @@
+{
+  "title": "Check warmups",
+  "body": "This ticket is to asses the readiness of the warmups.\n The warmups are in https://github.com/AAROC/hackfest-warmups. You should check the following to assess the readiness of the warmups.\n  1. [ ] The components you are using have directories in the warmups repo\n  1.  [ ] For each component that you are using, there are at least curl examples"
+}

@@ -12,6 +12,14 @@
       "id": 3,
       "name": "Update Hack Data",
       "template_file": "update_hack_data.json"
+    }, {
+      "id": 4,
+      "name": "Check agenda",
+      "template_file": "check_agenda.json"
+    }, {
+      "id": 4,
+      "name": "Check Warmups",
+      "template_file": "check_warmups.json"
     }
   ]
 }
