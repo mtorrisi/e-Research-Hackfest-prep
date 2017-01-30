@@ -10,12 +10,12 @@ This is the master checklist for a Sci-GaIA Open Science Hackfest. There are mor
     1. [ ] Decide where and when to have your event.
     1. [ ] Pick a name for the event ( _e.g._ 'Area Hackfest')
     1. [ ] Set up a page with a link to the survey
-  1. Send a call for applications with a deadline giving suffient time to arrange travel and accomodation for participants
+  1. **Send a call for applications** with a deadline giving suffient time to arrange travel and accomodation for participants
   1. **Select participants** :
     1. [ ] Create a review committee and set a deadline by which reviews should be done.
     1. [ ] Create a mailing list for the selected [participants](#MailingList)
     1. [ ] Send notification to passing applicants, with a [welcome pack](participants/welcome-pack.md) (TODO)
-    1. [ ] Request that all paricipants [register for the event as soon as possible](#registration) - Send period reminders to those who have not registered
+    1. [ ] Request that all participants [register for the event as soon as possible](#registration) - Send periodic reminders to those who have not registered.
     1. Request that the participants complete the [participant checklist](participants/checklist.md)
   1. **Create the event prep website**
     1. [ ] clone the master website
@@ -25,11 +25,11 @@ This is the master checklist for a Sci-GaIA Open Science Hackfest. There are mor
     1. [ ] Publish the website
     1. [ ] Update the sci-gaia website with link to the hackfest prep website.
     1. [ ] Send update email to registrants with links to the checklists
-  1. **Create the event board** - TODO
+  1. **Create the event issues board** - TODO
   1. **Deploy services for the event** - TODO
-    1. **CI/CD**
-    1. **Dev Environment**
-    1. **Integration platform**
+    1. **CI/CD** - Configure the Jenkins CI environment for the projects - TODO
+    1. **Dev Environment** - Deploy the dev environment for the warmups - TODO
+    1. **Integration platform** - Deploy the integration platform OSP components - TODO
   1. **Check content** - TODO
   1. **Populate the Agenda** - TODO.
   1. **Run final tests** - TODO
@@ -38,7 +38,10 @@ This is the master checklist for a Sci-GaIA Open Science Hackfest. There are mor
       1. **Use Case presentaitons** - TODO
       1. **The Hack** - TODO
 
-# Event venue
+# The event
+
+
+## Event venue
 
 It's the organiser's job to identify and book a suitable room (or rooms) for the workshop.
 
@@ -54,7 +57,7 @@ You'll need a room with:
   * Air-conditioning, because all those computers (and attendees) will generate a lot of heat.
   * Space to serve coffee and snacks, because learning is hungry work. A separate room is ok - consider whether the refreshment arrangements will disrupt proceedings.
 
-# Event Equipment
+## Event Equipment
 
 In addition to booking a room and catering, the organiser is responsible for providing an assortment of equipment and supplies for the workshop. The organiser should check that the following equipment and information is available and working:
 
