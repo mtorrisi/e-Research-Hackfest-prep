@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+- 2.0.0
+- 1.9.3
+- jruby-19mode
+- rbx-2
+gemfile: services/prep-scripts/Gemfile
+before_install:
+- cd services/prep-scripts
+install:
+- bundle install
+before_script:
+- ruby-lint readiness.rb
+notifications:
+  slack:
+    secure: ovdzuA+Re++WyO/9cXDOokkg3pbrzbaG8FrL9i22svTGQGndbHDyntw8x/ely+8ImFikJpHmI3XyvtsoKOVCdrsctnMZa5Z7Nmi+c+HkTR9WJtnep8JZOHsci2e5rPoSGAELcgir/4NUnwI4k6TD2BEMNtuEKlyydfgY0M4hw9IcRQdiy/FVrlxwuW1Msf1JyzQJ10glOMoqBgBtNMvQ1wQLfsxUyt2woMD9weATk+hmIv0PtCPbWRI8kyqKCiwB2YtY0vbPjTIPAZnwd63Qkw8Z6PxYZn/uE0QzZtppkL6WtrbUquM007FZSoFpI2ruGgajFGISNzRmUG2EFzuG/IIzFIXroEd8gnoJ3bFR8tul8j8dTyzW59wy7PBZRDD2iVZkyxzkMwg+NcKjoU5TjmH4KTsJVWJ9F/dugiGsC0AKp5oKzkZPUI5SNtsmym1I8/qD/mx55bnImxlN6EXUS8CHy6coa8Nwjab1Uk74kLxX6bS21kDfL7lA/xgayR1IqVyIcnQiP8aNT8ckLLVusYerCUeUNATtNcxSePAWQx4Ka01gN3y69kmqluJn5UXS5aiB+iT6FTzjU0xdJ8chTR2UFrL01znMvIlUc9FQV5VT30ISQDgifOvbzUxczan1Qyi9qILMVijSMMJEiz9Nau71nYYahBgcVBfxpp4xKTw=

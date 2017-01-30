@@ -1,0 +1,10 @@
+# frozen_string_literal: true
+source "https://rubygems.org"
+gem "awesome_print"
+gem "json"
+# Use octokit for interacting with GitHub
+gem "octokit"
+
+# Use HTTParty to interact with other REST APIs
+gem "httparty"
+gem "ruby-lint"
