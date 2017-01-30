@@ -67,7 +67,8 @@ Services necessary for the hackfest are :
 
 ### Development Environment - manual
 
-if you want to provision the
+if you want to provision the development environment from within an OpenStack cloud, here's how
+First [create a tenant](https://gist.github.com/mtorrisi/d445e4dc25b0aaf52aa0f8551745c2e1) if you haven't already. Then, create the VMs with `cloud-init`.
 
 **Nova with Cloud-Init**
 
