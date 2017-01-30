@@ -23,7 +23,9 @@ sandbox_category_id = sandbox_category[0]["id"]
 # Get the list of topics in that category
 topics = HTTParty.get("#{discourse_api_url}/c/#{sandbox_category_id}.json")
 # is there a topic with this title ?
-if topics["topic_list"]["topics"].any? { |t| t["title"] ==  }
+if topics["topic_list"]["topics"].any? { |t| t["title"] == "drills" }
+  puts "topic is there"
+end
 
 
   ap post
@@ -31,21 +33,23 @@ if topics["topic_list"]["topics"].any? { |t| t["title"] ==  }
 
   discourse_post_uri = discourse_api_url + "/posts"
   options = { :api_key => discourse_api_key, :api_username => 'system', :category => "sandbox"}
-  response = HTTParty.post(discourse_post_uri, body: post, query: options)
+  #response = HTTParty.post(discourse_post_uri, body: post, query: options)
 
   # check if the title has already been created - if so, update the topic with a new post
-  if response["errors"].to_s.match('Title has already been used')
-    puts "the title has already been taken, finding that one"
-  end
+  # if response["errors"].to_s.match('Title has already been used')
+  #   puts "the title has already been taken, finding that one"
+  # end
 
 
 
 octobot = Octokit::Client.new(:login => 'brucellino', :access_token => ENV['github_token'])
+github_headers = {"Authorization" => "token #{ENV["github_token"]}",  "User-Agent" => "drillbot", "Accept" => "application/vnd.github.inertia-preview+json"}
 github_org = "AAROC"
 github_repo = "e-Research-Hackfest-Prep"
 # Use the Github API naming schema for the variables
 milestone_title = "Aspring to Addis"
-project_name = "Hackfest Drills"
+project_name = "Hackfest Drills 1"
+project_body = "Project to simulate the hackfest"
 issue_labels = ["todo", "checking", "missing", "done"]
 
 ############# milestones ###############################
@@ -64,7 +68,22 @@ milestone = milestones.select {|m| m["title"] == "Aspiring to Addis" } # somethi
 
 
 ## /milestones #########################################
-############# issues #################################
+
+# Create the project.
+# projects haven't been implemented in octokit yet, so we have to HTTParty
+
+#  first, get the list of projects
+projects_list =HTTParty.get("https://api.github.com/repos/#{github_org}/#{github_repo}/projects", :headers => github_headers)
+ap projects_list.body
+projects_list = JSON.parse(projects_list.body)
+# Then check if the drill project has been created
+if projects_list.any? { |project|  project["name"] == project_name}
+  puts "project already created"
+# if not, create the project.
+  else
+    project = HTTParty.post("https://api.github.com/repos/#{github_org}/#{github_repo}/projects", :body => {"name": project_name, "body": "First drill of the hackfest"}.to_json, :headers => {"Authorization": "token #{ENV["github_token"]}", "User-Agent": "drillbot", "Accept": "application/vnd.github.inertia-preview+json"} )
+end
+ap project
 
 
 ## /issues ###########################################
@@ -74,6 +93,7 @@ milestone = milestones.select {|m| m["title"] == "Aspiring to Addis" } # somethi
 ## /labels ###########################################
 
 
+############# issues #################################
 ## Create the issues.
 
 issue_list = JSON.parse(File.read('drill_issues.json'))
@@ -90,6 +110,5 @@ issue_list["issues"].each do |issue|
 end
 
 puts "creating the topic"
-
 
 #ap response
