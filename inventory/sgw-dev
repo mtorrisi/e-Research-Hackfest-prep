@@ -1,0 +1,3 @@
+---
+[dev]
+sgw-dev.sci-gaia.eu ansible_user=ansible
