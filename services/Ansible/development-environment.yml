@@ -13,6 +13,11 @@
   - name: Pick up sensitive vars
     include_vars:
       file: "group_vars/passwords-{{ site_name }}.yml"
+  - name: Low down dirty setup
+    become: true
+    raw: "apt-get -y install {{ item }}"
+    with_items: "{{ managed_prerequisites }}"
+
 
   - name: Announce the setup
     slack:
@@ -26,10 +31,6 @@
     tags:
       - slack
 
-  - name: Low down dirty setup
-    become: true
-    raw: "apt-get -y install {{ item }}"
-    with_items: "{{ managed_prerequisites }}"
 
   - name: Announce the outcome
     slack:
