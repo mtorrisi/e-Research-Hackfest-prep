@@ -1,158 +1,36 @@
 ---
+# Use the following metadata schema for the projects :
+# * use github user names for user
+# * use github repo names for codename
+# * Choose components from :
+#   - oar
+#   - FutureGateway
+#   - gLibrary
+# * Describe which backend applications are needed in  the gridlcoud environment (CODE-RADE)
+
+# e.g.
+# - name: CodeName
+#   repo:  https://github.com/user/codename
+#   stack: https://stackshare.io/user/codename/details
+#   members:
+#     - user
+#     - otherUser
+#   components:
+#     - oar
+#     - Futuregateway
+#   applications:
+#     - Python
+#     - MySQL
+
+
 projects:
-  - name: Plantisc2
-    repo:  https://github.com/cudanor/Plantisc
-    stack: https://stackshare.io/cudanor/plantisc2/details
+  - name: WorldDomination
+    repo:  https://github.com/AAROC/WorldDomination
+    stack: https://stackshare.io/aaroc/WorldDomination/details
     members:
-      - cudanor
+      - brucellino
     components:
       - oar
       - Futuregateway
     applications:
-      - Python
-      - MySQL
-
-  - name: AARRMS
-    repo: addisriversmonitor
-    stack:  http://stackshare.io/yosephabate/addisriversmonitorstack
-    members:
-      - yosephabate
-    components:
-      - oar
-      - Futuregateway
-
-  - name: AgriSERVICOM
-    repo:
-    stack:
-    members:
-    components:
-      - oar
-      - Futuregateway
-      - ophidia
-    applications:
-      - Python
-      - MySQL
-
-  - name: ACEPRD
-    repo:
-    stack: http://stackshare.io/Davazano/aceprd-plant-repository
-    members:
-      - lordmila
-    components:
-      - oar
-      - Futuregateway
-    applications:
-      - Python
-      - PostgreSQL
-
-  - name: fuzzyfier
-    repo:
-    stack:
-    members:
-      - princtee
-    components:
-      - FG
-      - gLibrary
-    applications:
-      - fuzzylite
-
-  - name: D4PR
-    repo: UNIZIK-Drug-Design-and-Informatics
-    stack: https://stackshare.io/nnamdi-azikiwe-university-awka/d4pr
-    members:
-      - icuzochukwu
-    components:
-      - FG
-      - gLibrary
-      - OAR
-    applications:
-      - AutoDock
-      - GROMACS
-      - VINA
-
-  - name: ethernet
-    repo:
-    stack:
-    members:
-      - behailukorma
-
-  - name: metdata
-    repo:
-    stack:
-    members:
-      - olutayoajayifunaab
-
-  - name: gwas-pipeline
-    repo:
-    stack:
-    members:
-      - damilare88
-    components:
-      - oar
-      - Futuregateway
-    applications:
-      - Python
-      - Perl
-      - java
-      - R
-
-  - name: ibis
-    repo: https://github.com/sprintell/ibis
-    stack:
-    members:
-      - temitope
-      - sprintell
-    components:
-      - Futuregateway
-    applications:
-      - WEKA
-      - jena
-
-  - name: MIPAR
-    repo:
-    stack:
-    members:
-    components:
-      - oar
-      - Futuregateway
-    applications:
-      - R
-
-  - name: OAU-MAT
-    repo: https://github.com/trinitysege/OAU-MAT
-    stack: https://stackshare.io/obafemi-awolowo-university-ife/obafemi-awolowo-university-ife/
-    members:
-      - trinitysege
-    components:
-      - oar
-      - Futuregateway
-      - gLibray
-    applications:
-      - Python
-
-  - name: UI-NADA
-    repo:
-    stack:
-    members:
-      - waleolayide
-    components:
-      - oar
-      - ophidia
-    applications:
-      - Python
-
-  - name: HPC416S
-    repo: https://github.com/trustodia/HackFest
-    stack: https://stackshare.io/trustodia/trustodia
-    members:
-      - trustodia
-    components:
-      - Futuregateway
-    applications:
-      - Qiime
-      - usearch-64-bit
-      - Python
-      - Perl
-      - blast
-      - FastQC
-      - Prodigal
+      - ruby

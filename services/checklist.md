@@ -14,7 +14,25 @@ limitations under the License. -->
 
 # Hackfest services
 
-This is the checklist to prepare the services for an e-Research Hackfest. It assumes that you will be running a full hackfest. If you are running a pared-down or specialised hackfest, then select the bits that you want in your fork.
+This is the checklist to prepare the services for an e-Research Hackfest. It assumes that you will be running a full hackfest. If you are running a pared-down or specialised hackfest, then select the bits that you want in your fork. The services we refer to here are :
+
+  * Website for the event preparation, so that attendees are fully prepared for the event.
+  * development environment for for the participants to execute the warmups
+  * integration platform for them to use in developing their projects
+  * discussion and
+
+There are several other
+
+## How to use this checklist
+
+This checklist is aimed at giving a comprehensive, default procedure for preparing for an e-Science hackfest. A full checklist is created in order to guide the team of people running the event. The goal is that organisers need simply update specific information and variables for the event, and then run the relevant playbooks and complete the tasks. Organising an event of this kind is by its nature impossible to prescribe fully - there are always going to be unforseen issues and choices which are impossible to prescribe. However, experience has shown that most of the execution of the event can be predicted, and thus prepared for. We encourage anyone running an event to provide feedback and suggestions on improving the checklists for running it.
+
+Use this checklist when you have already read the [master checklist](../master-checklist.md) and are ready to prepare for
+
+## Overview of the procedure
+
+
+
 
 # Services
 
@@ -34,7 +52,8 @@ Services necessary for the hackfest are :
       * ssh public key
 
       Of each participant.
-  1. [ ] Add these to group_vars file
+
+  1. [ ] Add these to group_vars file for the events
 
 ### Deployment
 
@@ -47,6 +66,9 @@ Services necessary for the hackfest are :
 
 
 ### Development Environment - manual
+
+if you want to provision the development environment from within an OpenStack cloud, here's how
+First [create a tenant](https://gist.github.com/mtorrisi/d445e4dc25b0aaf52aa0f8551745c2e1) if you haven't already. Then, create the VMs with `cloud-init`.
 
 **Nova with Cloud-Init**
 
@@ -66,7 +88,8 @@ Services necessary for the hackfest are :
       ```
         nova floating-ip-associate fg-hackfest 151.97.41.44
       ```
-  1.
+
+
 
 ## Integration platform
 
@@ -79,4 +102,3 @@ The integration platform consists of a Jenkins service which runs the tests
 
   1. [ ] Fork the Jenkins config repo
   1. [ ] Edit group_vars for your event
-  1. [ ]
