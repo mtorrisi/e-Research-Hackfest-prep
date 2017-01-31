@@ -19,7 +19,7 @@
       domain: scigaia
       token: "{{ slack_token }}"
       msg: "Running training-lab setup for {{ inventory_hostname }} at {{ site_name }} :worried: "
-      channel: "#lagos-hackfest"
+      channel: "#addis-hackfest"
       username: "Ansible on {{ inventory_hostname }}"
       link_names: 1
       parse: 'full'
@@ -36,7 +36,7 @@
       domain: ubuntunet.slack.com
       token: "{{ slack_token }}"
       msg: "Running training-lab setup for {{ inventory_hostname }} at {{ site_name }} :ok_hand: "
-      channel: "#lagos-hackfest"
+      channel: "#addis-hackfest"
       username: "Ansible on {{ inventory_hostname }}"
       link_names: 1
       parse: 'full'
@@ -55,7 +55,7 @@
       domain: ubuntunet.slack.com
       token: "{{ slack_token }}"
       msg: "Running training-lab configuration on {{ inventory_hostname }} at {{ site_name }} :worried: "
-      channel: "#lagos-hackfest"
+      channel: "#addis-hackfest"
       username: "Ansible on {{ inventory_hostname }}"
       link_names: 1
       parse: 'full'
@@ -134,7 +134,7 @@
       domain: scigaia
       token: "{{ slack_token }}"
       msg: "{{ inventory_hostname }} at {{ site_name }} now knows kung-fu :neo:"
-      channel: "#lagos-hackfest"
+      channel: "#addis-hackfest"
       username: "Ansible on {{ inventory_hostname }}"
       link_names: 1
       parse: 'full'
