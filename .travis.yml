@@ -17,7 +17,7 @@ before_script:
 - echo $vault_pass > $HOME/.vault_pass
 script:
 - cd services/Ansible
-- ansible-playbook -i default.ini development-environment.yml --check-syntax
+- ansible-playbook -i default.ini development-environment.yml --syntax-check
 after_script:
 - rm $HOME/.vault_pass
 notifications:
