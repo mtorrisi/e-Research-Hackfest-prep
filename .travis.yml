@@ -16,7 +16,7 @@ before_script:
 script:
 - cd services/Ansible
 - ansible-playbook -i default.ini development-environment.yml --syntax-check
-- ansible-playbook -i default.ini development-environment.yml
+- ansible-playbook -i default.ini development-environment.yml -c local
 # one more for idempotence
 - ansible-playbook -i default.ini development-environment.yml
 after_script:
