@@ -13,7 +13,7 @@ before_install:
 - sudo apt-get install -qq python-apt
 install:
 - bundle install
-- pip install ansible
+- sudo pip install ansible
 before_script:
 # put the vault pass into a temporary file
 - echo $vault_pass > $HOME/.vault_pass
