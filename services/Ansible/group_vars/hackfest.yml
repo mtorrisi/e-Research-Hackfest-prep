@@ -24,8 +24,8 @@ prerequisites:
     - nano
     - joe
     - libffi-dev
-    - php5-curl
-    - php5-cli
+    - php-curl
+    - php-cli
     - jq
   RedHat:
     - vim
