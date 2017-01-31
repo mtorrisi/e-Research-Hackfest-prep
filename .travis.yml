@@ -15,8 +15,8 @@ before_script:
 - echo $vault_pass > $HOME/.vault_pass
 script:
 - cd services/Ansible
-- ansible-playbook -i default.ini development-environment.yml --syntax-check
-- ansible-playbook -i default.ini development-environment.yml -c local
+- ansible-playbook -i travis.ini development-environment.yml --syntax-check
+- ansible-playbook -i travis.ini development-environment.yml -c local
 # one more for idempotence
 - ansible-playbook -i default.ini development-environment.yml
 after_script:
