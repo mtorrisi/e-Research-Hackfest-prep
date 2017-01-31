@@ -3,8 +3,6 @@ sudo: required
 language: ruby
 rvm:
 - 2.0.0
-- jruby-19mode
-- rbx-2
 gemfile: services/prep-scripts/Gemfile
 before_install:
 - sudo apt-get update -qq
@@ -18,6 +16,9 @@ before_script:
 script:
 - cd services/Ansible
 - ansible-playbook -i default.ini development-environment.yml --syntax-check
+- ansible-playbook -i default.ini development-environment.yml
+# one more for idempotence
+- ansible-playbook -i default.ini development-environment.yml
 after_script:
 - rm $HOME/.vault_pass
 notifications:
