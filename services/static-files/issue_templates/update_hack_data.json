@@ -1,0 +1,4 @@
+{
+  "title": "Update Hack Information",
+  "body": "# You need to set the folllowing variables : \n   1. [ ] `repo`: The github repo where this website is kept \n  1. [ ] `discuss_topic` : Create a topic on the forum for attendees to introduce themselves \n  1. [ ] `agenda`: The link to the agenda page \n  1. [ ] `registration`:  link to the registration page \n  1. [ ] `start_time`, `end_time` : epoch time when the event starts and ends - use e.g. http://www.freeformatter.com/epoch-timestamp-to-date-converter.html\n  1. [ ] list of facilitators\n  1. [ ] facilitator metadata\n  1. [ ] facilitators are added the hackfest-prep repo, so that they can be assigned issues."
+}
