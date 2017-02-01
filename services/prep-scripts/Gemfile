@@ -8,3 +8,4 @@ gem "octokit"
 # Use HTTParty to interact with other REST APIs
 gem "httparty"
 gem "ruby-lint"
+gem 'jsonlint'
