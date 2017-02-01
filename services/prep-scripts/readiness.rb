@@ -18,6 +18,9 @@
 require "awesome_print"
 require "json"
 require  "date"
+require "time"
+# use chronic for natural language processing of times
+require "chronic"
 # Use octokit for interacting with GitHub
 require "octokit"
 
@@ -44,7 +47,7 @@ topics = HTTParty.get("#{discourse_api_url}/c/#{sandbox_category_id}.json")
 if topics["topic_list"]["topics"].any? { |t| t["title"] == "drills" }
   puts "topic is there, updating it"
 else
-  response = HTTParty.post(discourse_post_uri, body: post, query: options)
+  response = HTTParty.post(discourse_post_uri, body: post, query: discourse_options)
 end
 
 puts "opening issues on github for the milestone"
@@ -54,8 +57,10 @@ github_headers = {"Authorization" => "token #{ENV["github_token"]}",  "User-Agen
 github_org = "AAROC"
 github_repo = "e-Research-Hackfest-Prep"
 # Use the Github API naming schema for the variables
-milestone_title = "Aspring to Addis"
-project_name = "Hackfest Drills 1"
+milestone_title = "Drill 3"
+milestone_description = "Third drill"
+milestone_due_date = Chronic.parse("tomorrow").to_time.iso8601
+project_name = "Hackfest Drills 3"
 project_body = "Project to simulate the hackfest"
 issue_labels = ["todo", "checking", "missing", "done"]
 
@@ -71,10 +76,14 @@ end
 
 # find the milestone with the right title
 
-milestone = milestones.select {|m| m["title"] == "Aspiring to Addis" } # something wierd about how we match the titles here
-ap milestone
-milestone_number = milestone[0]['number']
-puts milestone_number
+milestone = milestones.select {|m| m["title"] == "Drill 2" } # something wierd about how we match the titles here
+unless milestone.class == nil
+  milestone_number = milestone[0]['number']
+  puts milestone_number
+else
+  # create milestone
+  octobot.create_milestone("#{github_org}/#{github_repo}",milestone_title, {:description => "Second Drill", :due_on => milestone_due_date})
+end
 ## /milestones #########################################
 
 #### projects #########################################
@@ -88,18 +97,24 @@ projects_list = JSON.parse(projects_list.body)
 # Then check if the drill project has been created
 if projects_list.any? { |project|  project["name"] == project_name}
   puts "project already created"
+  project_id = project[0]["id"]
 # if not, create the project.
-  else
+else
     project = HTTParty.post("https://api.github.com/repos/#{github_org}/#{github_repo}/projects", :body => {"name": project_name, "body": "First drill of the hackfest"}.to_json, :headers => {"Authorization": "token #{ENV["github_token"]}", "User-Agent": "drillbot", "Accept": "application/vnd.github.inertia-preview+json"} )
+    project_id = project.parsed_response["id"]
 end
+
 ap project
-project_id = project.parsed_response["id"]
 
 # Check columns
 columns = HTTParty.get("https://api.github.com/projects/#{project_id}/columns", :headers => github_headers)
 # add columns if they are not there
 column_titles=["todo","in progress", "checked","done"]
+column_titles.each do |c|
+  HTTParty.post("https://api.github.com/projects/#{project_id}/column", :body => {"name": c}, :headers => github_headers)
+end
 #  add issues to the project
+
 
 ## /projects ###########################################
 
@@ -124,7 +139,6 @@ issue_list["issues"].each do |issue|
   ap issue_content
   issue_body = octobot.markdown('#{issue_content}')
   i = octobot.create_issue("#{github_org}/#{github_repo}",issue_content["title"],issue_content["body"],:milestone => milestone_number)
-
 end
 
 puts "creating the topic"
