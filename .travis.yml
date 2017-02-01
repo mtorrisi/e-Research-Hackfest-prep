@@ -21,6 +21,8 @@ script:
 - ansible-playbook -i travis.ini development-environment.yml -c local
 # one more for idempotence
 - ansible-playbook -i default.ini development-environment.yml
+- cd $HOME/services/static-files
+- jsonlint `find . -name "*.json"`
 after_script:
 - rm $HOME/.vault_pass
 notifications:
