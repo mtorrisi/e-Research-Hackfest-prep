@@ -1,0 +1,4 @@
+{
+  "title": "Update Hack Team",
+  "body": "# Who is running the hack ?\n You need to update the `members` variable in [team.yml](https://github.com/sci-gaia/addis-hackfest-site/blob/master/_data/team.yml), and assign `members` to `roles`. There are 3 roles:\n  1. **organisers** those responsible for the actual event\n  1.  **facilitators** - those who will be present at the event facilitating the participants\n  1. **participant** - those who have had a use case accepted and are coming to the hack to develop it. \n\n  1.  Add the following information to each `member`:\n    * `name`: name and surname\n    * `photo`: the name of the file with the photo of that person.\n    * ` orcid`: The ORCID of that person.\n    * `github`: Their github user name\n    * `twitter`: Their user account on twitter.\n    * `homepage`: link to their home page\n    * `org`:  Name of their organisation.\n  1. Add the relvant people to the correct list."
+}

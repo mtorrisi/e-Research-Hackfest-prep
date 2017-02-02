@@ -1,20 +1,36 @@
+python: '2.7'
+sudo: required
+services:
+  - docker
 language: ruby
 rvm:
 - 2.0.0
-- 1.9.3
-- jruby-19mode
-- rbx-2
 gemfile: services/prep-scripts/Gemfile
 before_install:
-- cd services/prep-scripts
+- sudo apt-get update -qq
+- sudo apt-get install -qq python-apt
 install:
 - bundle install
+- sudo pip install ansible
 before_script:
-- ruby-lint readiness.rb
+# put the vault pass into a temporary file
+- echo $vault_pass > $HOME/.vault_pass
+script:
+- cd services/Ansible
+- ansible-playbook -i travis.ini development-environment.yml --syntax-check
+- ansible-playbook -i travis.ini development-environment.yml -c local
+# one more for idempotence
+- ansible-playbook -i default.ini development-environment.yml
+- cd $HOME/services/static-files
+- jsonlint `find . -name "*.json"`
+after_script:
+- rm $HOME/.vault_pass
 notifications:
   slack:
     secure: ovdzuA+Re++WyO/9cXDOokkg3pbrzbaG8FrL9i22svTGQGndbHDyntw8x/ely+8ImFikJpHmI3XyvtsoKOVCdrsctnMZa5Z7Nmi+c+HkTR9WJtnep8JZOHsci2e5rPoSGAELcgir/4NUnwI4k6TD2BEMNtuEKlyydfgY0M4hw9IcRQdiy/FVrlxwuW1Msf1JyzQJ10glOMoqBgBtNMvQ1wQLfsxUyt2woMD9weATk+hmIv0PtCPbWRI8kyqKCiwB2YtY0vbPjTIPAZnwd63Qkw8Z6PxYZn/uE0QzZtppkL6WtrbUquM007FZSoFpI2ruGgajFGISNzRmUG2EFzuG/IIzFIXroEd8gnoJ3bFR8tul8j8dTyzW59wy7PBZRDD2iVZkyxzkMwg+NcKjoU5TjmH4KTsJVWJ9F/dugiGsC0AKp5oKzkZPUI5SNtsmym1I8/qD/mx55bnImxlN6EXUS8CHy6coa8Nwjab1Uk74kLxX6bS21kDfL7lA/xgayR1IqVyIcnQiP8aNT8ckLLVusYerCUeUNATtNcxSePAWQx4Ka01gN3y69kmqluJn5UXS5aiB+iT6FTzjU0xdJ8chTR2UFrL01znMvIlUc9FQV5VT30ISQDgifOvbzUxczan1Qyi9qILMVijSMMJEiz9Nau71nYYahBgcVBfxpp4xKTw=
 env:
   global:
+  - ANSIBLE_VAULT_PASSWORD_FILE=$HOME/.vault_pass
   - secure: i1W6h2RCNSWNK5yF9KqMwfRVzGX3+KoDYAl/NiCRBsTdfCdzX2dtDM+MQqVcqZW/oAOeeluAQnhG7R8W5mCLfVNIU7zzXGOACErezMQRCNw7tPTNK9FJs/KJKKD6ac2HXn2LPVWOCRgY9KBkAMHpGMO8u1SeHONPdrh/Rmd4q95zHc0CBVtk9plGRGQniDzVX8fZ+3qpH3EjoolISDPmoLG6oWpS5HsI5epca5j+GcEezM/jCvTf+7SVXjMhG1vdZB0fs5mJ68OdKCQupeWrftr0RUCuR4cngprd6a3RB3yORNQoL7xQuy02KbALQU+A+Mfm0zgSCStbylzxBGqZP3cfo6Yocbyy/QvrbsD1oa3u4JI/hDSbfrcge00vhCQhSRVb3UkjMgI9IAyCxYZTrWCFhNRfDvPmYxQq6RnSrWttvhGGiv5KXJrtVd2210+4mC1D6OjFpZrh2uvEeenps2emEGDwj4ba8vwjvFLkiiZiNUzerc47WOwHDIqKGuDMeuPg0S0JxPkn3VUb34hTxioEkbpcMWnqG+fhrNSHHOvo6Np5v+ps7KLAHHx40Dp12A/blYNSSAqJl8s8iyT3BH08FTM0MeXc2a9g4zx71l/uoe8wuaI1P/Ptl3/Kt6yzpNq0e6Js2lVUI3c0N6Povc2j+ShZWm8VoHRoEqaFPNg=
   - secure: jR2BwEdHT8z/GVMGvYfHsEj8v7QCUNiuQXKPrDXgEnkmheI3ZKwdcs3JQvwOgnjMHx/jH7ZAtl0MMEP3JqHIEuGfqfguZGT8nrFm5SpyVMXeNxCFtUESEV0coxdhiI7qBMynA+VQeX/QcL8aHwDeVzB+AMabPvNb7z8X/CZZSCnuVmfvYQ2uSe3T0lQ80Lui4AfrEMtrBbAf4Azj/Bs+1odm5TsMVqkHZg0y5Efd3xK2YFcAhS3XLn5ffdS/XXo/fGh7om58PLrsb1kqXwJhXttBERuLhP+yZRkNWaG1bYVfYSTnjb5SMwYvRaZXbJnOflBHpAle3vtXww9+Ds8p61g3s2lnvEv2WT2pEJhp6tqx9uV6thKql+J/lCzZG2HexMnNSLhGNEKi0GkUjW1ek4a3RbHdbR/yCMXXxMLg0bJf1NX/qgKwVjYqFF6R5/Bw1DgtuDXe1RrkftCHhT7WCk1n5Zu9RK8NNo3LhDkw7m5qmSaQDb8zKFnC8edRUStZ2rxXAl2GQjtplcYm2TfZFDVh0pr9l0UXmn9W2eTTp+SCRam52jqNEcNjjB+5Sj0YPIQyLVRr4Q9Wp9OGdsf6QSaXkotaCH0XEBiA83O5TOxh/zK5n3+7NJjUFmqB976r3OTDxIIgB763Qdvzi4XUJcREraEfx6eDGgL+FdSNeyA=
+  - secure: Rr9WZ0nEsL/lhPNF4HcGeEzCv9qtb0+sizycgnayujrlbQzvOf6hMFw709gIk+Ddq6Xivdr70nQOzDBlZ7HKL+w3zMODzmiA3YYiOweLvD5V8Tc59YnLIj+UK9l/J07wdiNf2Cy09IRJo0GcTsGAIrLhVXYPCgbHCtPrElMlnE3H/aWXmM5HICrWhz6NeWesRNqPpWFdU5dxrN4HAe2nPnn38he434yMH/ToPn+Ayhd98D2k97k7pu8QLwssK9oBTioNsMI91TSq/d09/iyant/5EAWUKx6YDE46wLcX0pSlofkLq9lWGDgRlBf8JwK3eB6jQgLY/Cj5AHvejCJb2PeM6aaFwGZls4S3FUUReH0Y8lZRqVu2474n+TEuKw1PB42oCE1jXii7LBSR+MFXmtXONtVqa+DSNZKelwzBGJQ6Us8sGKlHFq0LBwV0mflCzPZ6IkLafo3RNmu7R17GRlWnotrj1ASKYHM5WJolaljSpzs+0M1E5ZDhCZQ3j33Lr4ZdQpBdsE8GVkEz3Rm52yr0/sh1VX2NRp8Ixn6/dj+1PHjvI7e/Rb8NLKcOOZfy3OU8FZVrTQJ4MCB41TCuOEPMz/DnM/AX/2b4R79WvJOKi87BAN+UhwF2YhjEl9my8OMsvFtHkCBEUwjqz+J02qRNQop2kf2ITuHbt2ypxQU=
