@@ -44,4 +44,4 @@ end
 
 # print the yaml
 ap JSON.parse(addis.to_json).to_yaml
-File.open('/tmp/test.yml', 'w') {|f| f.write JSON.parse(addis.to_json).to_yaml } #Store
+File.open('participants-addis.yml', 'w') {|f| f.write JSON.parse(addis.to_json).to_yaml } #Store
