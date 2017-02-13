@@ -38,7 +38,11 @@ addis = Array.new
 ap addis
 
 participants.each do |p|
-  participant = {:name => p["Name"], :institute => p["Institution"], :orcid => p["ORCID ID (see http://orcid.org)"], :github => [{:username => p["GitHub account (see http://github.com)"], :confirmed => false}], :email => p["Email"]}
+  if p["Github account (see http://github.com)"].nil?
+  participant = {:name => p["Name"], :institute => p["Institution"], :orcid => p["ORCID ID (see http://orcid.org)"], :github => {:username => p["GitHub account (see http://github.com)"], :confirmed => false}, :email => p["Email"]}
+  else
+    participant = {:name => p["Name"], :institute => p["Institution"], :orcid => p["ORCID ID (see http://orcid.org)"], :github => {:username => "none", :confirmed => false}, :email => p["Email"]}
+  end
   addis.push(participant)
 end
 
