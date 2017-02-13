@@ -78,7 +78,7 @@
 
   - name: Pull in users
     include_vars:
-      file: "../../participants/participants.yml"
+      file: "../../participants/participants-{{ site_name}}.yml"
 
   - name: Add users
     become: true
@@ -87,7 +87,11 @@
       comment: "{{ item.name  }}"
       createhome: true
       generate_ssh_key: true
+      shell: /bin/bash
     with_items: "{{ participants }}"
+    when: item.github.username
+
+  # should check whether the keys are good here and update "confirmed"
 
   - name: Ensure that the participant ssh key on Github is in authorized keys
     become: true
@@ -98,6 +102,8 @@
       key: "https://github.com/{{ item.github.username }}.keys"
       state: present
     with_items: "{{ participants }}"
+    when: item.github.username
+    ignore_errors: true
 
   - name: ensure that the warmups repo is present
     become: true
@@ -107,6 +113,9 @@
 
     with_items:
       "{{ participants }}"
+    when: item.github.username
+
+
   - name: ensure that the repo belongs to the user
     become: true
     file:
@@ -116,6 +125,7 @@
       recurse: yes
       group: "{{ item.github.username }}"
     with_items: "{{ participants }}"
+    when: item.github.username
 
 #
 #     # - name: Ensure that the preferred editor is available
