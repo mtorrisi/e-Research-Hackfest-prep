@@ -1,0 +1,149 @@
+---
+participants:
+- name: ABAYINEH, Abera
+  institute: Hawassa University
+  orcid: none
+  github:
+    username: none
+    confirmed: false
+  email: aberaabayineh2004@gmail.com
+- name: Mr. ALEMAYEHU, Alazar
+  institute: Ethiopian Education and Research Network (EthERNet)
+  orcid: 0000-0003-3665-1027
+  github:
+    username: https://github.com/alazaralex
+    confirmed: false
+  email: alazar.1994@gmail.com
+- name: Prof. BARBERA, Roberto
+  institute: University of Catania
+  orcid: 0000-0001-5971-6415
+  github:
+    username: robertobarbera
+    confirmed: false
+  email: roberto.barbera@ct.infn.it
+- name: Dr. BECKER, Bruce
+  institute: Meraka Institute, CSIR
+  orcid: 0000-0002-6607-7145
+  github:
+    username: brucellino
+    confirmed: false
+  email: bbecker@csir.co.za
+- name: Mrs. DESALEGN, Frehiwot Belay
+  institute: Jimma University
+  orcid: orcid.org/0000-0002-9679-7741
+  github:
+    username: frehiwotbelay34@gmail.com
+    confirmed: false
+  email: frehiwotbelay34@gmail.com
+- name: Mr. DINKU, Yared
+  institute: Ethiopian Civil Service University
+  orcid: yared03e
+  github:
+    username: yared03e
+    confirmed: false
+  email: yared03e@gmail.com
+- name: Ms. GAMTESA, talile
+  institute: Ethrenet
+  orcid: 0000-0001-8249-8487
+  github:
+    username: tgamtesa@gmail.com
+    confirmed: false
+  email: talile.gamtesa@ethernet.edu.et
+- name: GETACHEW, mekuanent
+  institute: EthERNet
+  orcid: orcid.org/0000-0002-8860-6722
+  github:
+    username: https://github.com/mekuanent
+    confirmed: false
+  email: mekuanent@hotmail.com
+- name: Mrs. MARCHESE, Domenica
+  institute: PI4 s.r.l.s
+  orcid: none
+  github:
+    username: none
+    confirmed: false
+  email: domenica.marchese@pi4.it
+- name: Mr. MULATU, Eyuel
+  institute: EthERNet
+  orcid: orcid.org/0000-0002-3719-4289
+  github:
+    username: https://github.com/eyu-se
+    confirmed: false
+  email: eyuelmulatu@gmail.com
+- name: Mr. MULUGETA, Roger
+  institute: Ethernet
+  orcid: orcid.org/0000-0002-1839-3311
+  github:
+    username: rogermule
+    confirmed: false
+  email: rogermulugeta@gmail.com
+- name: MUSA, Salahadin
+  institute: Jimma University
+  orcid: orcid.org/0000-0002-0743-8238
+  github:
+    username: salubinseid
+    confirmed: false
+  email: salubinseid@gmail.com
+- name: Mr. OSURE, Ronald
+  institute: KENET
+  orcid: none
+  github:
+    username: sureronald
+    confirmed: false
+  email: rosure@kenet.or.ke
+- name: Mrs. RICCERI, Rita
+  institute: University of Catania
+  orcid: orcid.org/0000-0002-5532-8201
+  github:
+    username: ricceri
+    confirmed: false
+  email: rita.ricceri@ct.infn.it
+- name: Mr. SAMUEL, Nebiyou
+  institute: EthERNet
+  orcid: orcid.org/0000-0002-3190-6732
+  github:
+    username: nebiyousamuel
+    confirmed: false
+  email: Nebiyou.samuel@ethernet.edu.et
+- name: Mr. SISAY, Ephrem
+  institute: Ethrenet
+  orcid: '3,045,119'
+  github:
+    username: ephi2006@gmail.com
+    confirmed: false
+  email: ephi2006@gmail.com
+- name: Dr. STRINO, Patrizia
+  institute: PI4 s.r.l.s
+  orcid: none
+  github:
+    username: none
+    confirmed: false
+  email: patrizia.strino@pi4.it
+- name: Mr. TADESSE, Tilahun
+  institute: Ethiopian Civil Service
+  orcid: Tilahun
+  github:
+    username: Tile12
+    confirmed: false
+  email: tileict@gmail.com
+- name: TOLLERA , Wondante
+  institute: 'Arsi University '
+  orcid: 0000-0001-6386-1439
+  github:
+    username: Wondante
+    confirmed: false
+  email: 'Wondante2013@gmail.com '
+- name: Mr. TORRISI, Giuseppe
+  institute: PI4 s.r.l.s
+  orcid: none
+  github:
+    username: none
+    confirmed: false
+  email: giuseppe.torrisi@pi4.it
+- name: 'Mr. YOSEF, Biweded '
+  institute: 'Ethiopia Civil Service University '
+  orcid: bitwededyosef
+  github:
+    username: bitwededyosef
+    confirmed: false
+  email: bitwededyosef@gmail.com

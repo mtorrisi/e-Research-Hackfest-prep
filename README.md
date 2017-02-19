@@ -1,22 +1,22 @@
+[![Build Status](https://travis-ci.org/AAROC/e-Research-Hackfest-prep.svg?branch=master)](https://travis-ci.org/AAROC/e-Research-Hackfest-prep)
+
 # e-Research-Hackfest-prep
 
 The repository for the organising team of an e-Research Hackfest.
 
 # What is a hackfest ?
 
-TODO
+An e-Science Hackfest is an event organised to rapidly prototype and co-develop science gateways based on an open science platform. See the [O.G. Hack](https://www.sci-gaia.eu/summer-hackfest)
 
 ## When and why to have a hackfest ?
 
-TODO
+**Why would you want to have a hackfest ?** - See the [list of our champions](https://www.sci-gaia.eu/champions) - they'll tell you better than we ever could.
 
-## Who is involved in a hackfest ?
-
-TODO
+**When would be the best time to hack ?** - Any time is good, but the summer is best.
 
 ## What happens during a hackfest ?
 
-TODO
+TODO 
 
 # Actors in a hackfest
 

@@ -1,4 +1,4 @@
 ---
-site_name: addis
+site_name: default
 # where do you want messages to go ?
 slack_channel: addis-hackfest
