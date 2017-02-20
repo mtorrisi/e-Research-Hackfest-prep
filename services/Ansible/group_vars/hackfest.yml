@@ -8,6 +8,7 @@ java7_name:
 managed_prerequisites:
  - python2.7
  - python-simplejson
+ - ca-certificates
 prerequisites:
   Debian:
     - vim

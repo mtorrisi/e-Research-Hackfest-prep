@@ -18,3 +18,13 @@ participants:
     twitter:
     homepage: "127.0.0.1"
     email: hackfest@africa-grid.org
+
+  - name: "Mario Torrisi"
+    institute: "DPA UNICT"
+    orcid: 0000-0002-8981-5198
+    github:
+      username: mtorrisi
+      confirmed: yes
+    twitter:
+    homepage:
+    email: mario.torrisi@ct.infn.it

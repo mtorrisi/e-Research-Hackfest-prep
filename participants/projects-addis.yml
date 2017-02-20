@@ -1,0 +1,77 @@
+---
+# Use the following metadata schema for the projects :
+# * use github user names for user
+# * use github repo names for codename
+# * Choose components from :
+#   - oar
+#   - FutureGateway
+#   - gLibrary
+# * Describe which backend applications are needed in  the gridlcoud environment (CODE-RADE)
+
+# e.g.
+# - name: CodeName
+#   repo:  https://github.com/user/codename
+#   stack: https://stackshare.io/user/codename/details
+#   members:
+#     - user
+#     - otherUser
+#   components:
+#     - oar
+#     - Futuregateway
+#   applications:
+#     - Python
+#     - MySQL
+
+
+projects:
+  - name: GaussianPortlet
+    repo:  https://github.com/mekuanent/GaussianPortlet
+    stack:
+    members:
+      - mekuanent
+    components:
+      - Futuregateway
+    applications:
+      - Java
+      - JSP
+      - XML
+
+  - name: ethoar
+    repo:
+    stack:
+    members:
+      - eyu-se
+    components:
+      - oar
+
+  - name: ethidp
+    repo:
+    stack:
+    members:
+      - rogermule
+    components:
+      -
+
+  - name: ethdiscourse
+    repo:
+    stack:
+    members:
+      -
+    components:
+      - discourse
+
+  - name: ethcourses
+    repo:
+    stack:
+    members:
+      -
+    components:
+      - openedX
+
+  - name: ethagenda
+    repo:
+    stack:
+    members:
+      -
+    components:
+      - indico
